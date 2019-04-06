@@ -1,0 +1,574 @@
+// reset starts
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video
+{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+.overflow-hidden {
+    overflow: hidden ;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
+{
+    display:block;
+}
+
+.display-block {
+    display: block;
+    width:100%;
+}
+
+nav ul
+{
+    list-style:none;
+}
+
+blockquote, q
+{
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,q:before, q:after
+{
+    content:none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a
+{
+    margin:0;
+    padding:0;
+    font-size:100%;
+    outline: none !important;
+    vertical-align:baseline;
+    background:transparent;
+    text-decoration: none;
+    // @include transition(0.2s, ease-in-out);
+}
+
+/* change colours to suit your needs */
+ins
+{
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark
+{
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del
+{
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title]
+{
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table
+{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr
+{
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:0;
+    padding:0;
+}
+
+input, select {vertical-align:middle;}
+
+select {
+    // @include appearance ();
+}
+
+ul
+{
+    margin:0;
+    padding:0;
+}
+
+ul li
+{
+    display: inline-block;
+    list-style-type: none;
+    vertical-align: middle;
+}
+
+h1 { font-size: 2em } h2 { font-size: 1.5em} h3 { font-size: 1.17em} h4 {font-size: 1.33em} h5 {font-size: 0.83em} h6 {font-size: 0.67em}
+
+button
+{
+    background-color: transparent;
+    outline: none !important;
+    padding:0;
+    margin:0;
+    border:none;
+    cursor: pointer;
+}
+
+.padding-bottom-0 {
+    padding-bottom:0px !important;
+}
+
+.full-height {
+    height:100%;
+}
+
+.full-width {
+    width:100%;
+}
+
+.full {
+    width:100%;
+    height:100%;
+}
+
+.relative {
+    position: relative;
+}
+
+input[type="password"] {
+    -webkit-text-security: disc;
+}
+
+// reset ends
+@mixin clearFix{
+    &:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+  
+@mixin grid($cols, $mgn){
+    float: left;
+    width: ((100% - (($cols - 1) * $mgn)) / $cols );
+    margin-right: $mgn;
+    margin-bottom: $mgn;
+    &:nth-child(#{$cols}n){
+      margin-right: 0;
+    }
+}
+  
+@mixin mQ($args...){
+    @if length($args) == 1{
+      @media screen and (max-width: nth($args, 1)){
+        @content;
+      }
+    }
+    // @if length($args) == 2{
+    //   @media screen and (max-width: nth($args, 1)) and (min-width: nth($args, 2)){
+    //     @content;
+    //   }
+    // }
+}
+// page all color  /
+$white              : #ffffff;
+$black              : #000000;
+
+/* fonts starts*/
+
+@mixin font-family($font, $size , $color, $value:none) {
+    font-size:$size;
+    color: $color;
+    font-family: $font;
+    text-transform: $value;
+}
+
+@mixin font($size , $color, $value:none) {
+    font-size:$size;
+    color: $color;
+    text-transform: $value;
+}
+
+
+// page all font-family 
+$regular            : "Segoeui";
+$bold               : "Segoeui-bold";
+$semibold           : "Segoeui-semibold";
+$helveticalight     : "Helvetica-light";
+
+
+
+// page all font size 
+$size11             : 11px;
+$size12             : 12px;
+$size13             : 13px;
+$size14             : 14px;
+$size15             : 15px;
+$size16             : 16px;
+$size17             : 17px;
+$size18             : 18px;
+$size19             : 19px;
+$size20             : 20px;
+$size21             : 21px;
+$size22             : 25px;
+$size23             : 23px;
+$size24             : 24px;
+$size25             : 25px;
+$size53             : 53px;
+
+/* fonts starts */
+
+@font-face {
+    font-family: $regular;   
+    src: url("fonts/Segoeui/segoeui-regular.ttf");
+}
+
+@font-face {
+    font-family:$bold;   
+    src: url("fonts/Segoeui/segoeui-bold.ttf");
+}
+
+@font-face {
+    font-family:$semibold;   
+    src: url("fonts/Segoeui/segoeui-semibold.ttf");
+}
+
+@font-face {
+    font-family:$helveticalight;   
+    src: url("fonts/Helvetica/HelveticaNeueCyr-Light.otf");
+}
+
+/* fonts ends */
+$purple: #ac2387;
+$red: #ff4040;
+
+body{
+  font-family: 'Roboto', sans-serif!important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #ac2387;
+}
+
+img {
+  width: 100%;
+}
+
+* {
+  user-select: none;
+}
+
+.counter-sc {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(0deg, #02041a 0%, #ac2387 100%);
+  .planet-stars {
+    position: relative;
+    z-index: 1;
+    .img-outer {
+      position: fixed;
+      top: -50px;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+  .meteors {
+    width: 100vw;
+    position: fixed;
+    right: -100px;
+    bottom: 0px;
+    z-index: 2;
+    transform: rotate(159deg);
+    .orbit {
+      margin: 50px 0px;
+      .img-outer {
+        transform: rotate(200deg);
+      }
+      &:nth-child(1) {
+        .img-outer {
+          width: 66px;
+          animation: meteorAction 3s linear infinite;
+        }
+      }
+      &:nth-child(2) {
+        .img-outer {
+          width: 212px;
+          animation: meteorAction 2.5s linear infinite;
+        }
+      }
+      &:nth-child(3) {
+        .img-outer {
+          width: 132px;
+          animation: meteorAction 2s linear infinite;
+        }
+      }
+      &:nth-child(4) {
+        .img-outer {
+          width: 66px;
+          animation: meteorAction 4s linear infinite;
+        }
+      }
+      &:nth-child(5) {
+        .img-outer {
+          width: 66px;
+          animation: meteorAction 5s linear infinite;
+        }
+      }
+      &:nth-child(6) {
+        .img-outer {
+          width: 115px;
+          animation: meteorAction 3s linear infinite;
+        }
+      }
+      &:nth-child(7) {
+        .img-outer {
+          width: 93px;
+          animation: meteorAction 4s linear infinite;
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes meteorAction {
+  0% {
+    margin-left: -212px;
+  }
+  100% {
+    margin-left: calc(100vw + 212px);
+  }
+}
+
+// hamburger star
+
+.hamburger {
+  width: 30px;
+  padding: 25px;
+  position: fixed;
+  top: 52px;
+  right: 45px;
+  // top:77px;
+  // right: 70px;
+  z-index: 11;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  span {
+    display: block;
+    width: 100%;
+    height: 2.5px !important;
+    background: white;
+    margin: 7.65px 0px;
+    border-radius: 4px;
+    transition: 0.2s ease-in-out;
+  }
+  &.open {
+    // padding: 24px 25px;
+    span {
+      &:first-child {
+        transform: rotate(45deg);
+      }
+      &:last-child {
+        transform: rotate(-45deg);
+        margin-top: -10px;
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}
+
+// hamburger end
+
+// contact section start
+
+.contact-sc {
+  background: rgba(black, 0.7);
+  box-sizing: border-box;
+
+  position: fixed;
+  right: 50px;
+  top: 57px;
+  z-index: 10;
+
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+
+  form {
+    width: 353px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 4px;
+
+    position: relative;
+
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    transition-delay: 0.2s;
+    input,
+    textarea {
+      width: 100%;
+      display: block;
+      color: rgba($purple, .7);
+      padding: 12px 22px;
+      margin-bottom: 20px;
+      border-radius: 2px;
+      border: none;
+      outline: none;
+      font: {
+        size: 20px;
+        weight: 400;
+        family: 'Roboto', sans-serif!important;
+      }
+      &::placeholder {
+        color: rgba($purple, .7);
+        font: {
+          size: 20px;
+        }
+      }
+      &.error{
+        color: $red;
+        &::placeholder {
+          color: $red;
+        }
+      }
+    }
+    button {
+      min-width: 195px;
+      padding: 11px 0px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      background: $purple;
+      color: white;
+      border-radius: 4px;
+      letter-spacing: 0.75px;
+      font: {
+        size: 20px;
+        weight: 400;
+      }
+    }
+    span.error {
+      width: 100%;
+      color: $red;
+      text-align: center;
+      height: 0px;
+      display: none;
+      font: {
+        size: 20px;
+      }
+    }
+  }
+  &.open {
+    width: 509px;
+    height: calc(100vh - 114px);
+    padding: 104px 78px;
+    overflow: auto;
+    form {
+      opacity: 1;
+    }
+  }
+}
+
+// contact section end
+
+.counter {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9;
+  transform: translate(-50%, -50%);
+  h1 {
+    line-height: 130px;
+    font: {
+      size: 120px;
+    }
+  }
+  span {
+    margin-top: -50px;
+    font: {
+      size: 120px;
+    }
+  }
+  p {
+    font: {
+      size: 30px;
+      weight: 400;
+    }
+  }
+  display: flex;
+  align-items: center;
+  text-align: center;
+  span {
+    padding: 0px 20px;
+  }
+}
+
+@include mQ(1440px){}
+
+@include mQ(1300px){}
+
+@include mQ(1200px){}
+
+@include mQ(991px){}
+
+// @include mQ(823px){}
+
+// @include mQ(812px){}
+
+@include mQ(768px){}
+
+// @include mQ(736px){}
+
+// @include mQ(731px){}
+
+// @include mQ(667px){}
+
+// @include mQ(640px){}
+
+@include mQ(576px){}
+
+// @include mQ(568px){}
+
+@include mQ(414px){}
+
+// @include mQ(411px){}
+
+@include mQ(375px){}
+
+// @include mQ(360px){}
+
+@include mQ(320px){}
+
